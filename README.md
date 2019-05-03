@@ -9,4 +9,5 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD005 Ai Pawn sensor configurado C++
 * TTD006 HUD y Menus
 * TTD007 Merge1
+* TTD008 Luces corregidas y Main menu añadido
 
