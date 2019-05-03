@@ -7,3 +7,6 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD003 Map set
 * TTD004 Animaciones y meshh Lito incorporado
 * TTD005 Ai Pawn sensor configurado C++
+* TTD006 HUD y Menus
+* TTD007 Merge1
+
