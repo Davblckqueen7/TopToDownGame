@@ -3,5 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTopToDownGame, Log, All);

@@ -55,11 +55,31 @@ ATopToDownGameCharacter::ATopToDownGameCharacter()
 	// Activate ticking in order to update the cursor every frame.
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
+
+	InitialLife = 100.f;
+	CurrentLife = InitialLife;
+}
+
+float ATopToDownGameCharacter::GetCurrentLife()
+{
+	return CurrentLife;
+}
+
+float ATopToDownGameCharacter::GetInitialLife()
+{
+	return InitialLife;
+}
+
+void ATopToDownGameCharacter::UpdateCurrentLife(float life)
+{
+	CurrentLife += life;
 }
 
 void ATopToDownGameCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+
+	UpdateCurrentLife(-DeltaSeconds * 0.01f*InitialLife);
 
 	if (CursorToWorld != nullptr)
 	{

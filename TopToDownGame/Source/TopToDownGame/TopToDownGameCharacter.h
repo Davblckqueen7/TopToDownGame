@@ -14,6 +14,17 @@ class ATopToDownGameCharacter : public ACharacter
 public:
 	ATopToDownGameCharacter();
 
+	/**Funcion de acceso a CurrentLife*/
+	UFUNCTION(BlueprintPure, Category = "Life")
+		float GetCurrentLife();
+
+	/**Funcion de acceso a InitialLife*/
+	UFUNCTION(BlueprintPure, Category = "Life")
+		float GetInitialLife();
+
+	/**Actuliza el valor de vida del personaje*/
+	UFUNCTION(BlueprintCallable, Category = "Life")
+		void UpdateCurrentLife(float life);
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;
 
@@ -25,6 +36,13 @@ public:
 	FORCEINLINE class UDecalComponent* GetCursorToWorld() { return CursorToWorld; }
 
 private:
+	/**Character current life*/
+	UPROPERTY(EditAnywhere, Category = "Life")
+	float CurrentLife;
+
+	UPROPERTY(EditAnywhere, Category = "Life")
+		float InitialLife;
+
 	/** Top down camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* TopDownCameraComponent;

@@ -10,9 +10,18 @@ UCLASS(minimalapi)
 class ATopToDownGameGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+		virtual void BeginPlay() override;
+
 
 public:
 	ATopToDownGameGameMode();
+
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Life", Meta = (BlueprintProtected = "true"))
+		TSubclassOf<class UUserWidget>PlayerHUDClass;
+
+	UPROPERTY()
+		class UUserWidget* CurrentWidget;
 };
 
 

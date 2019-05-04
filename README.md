@@ -1,4 +1,4 @@
-# TopToDownGame
+﻿# TopToDownGame
 Proyecto de Aplicaciones 3D UMNG.
 ---
 ## Indice
@@ -10,4 +10,5 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD006 HUD y Menus
 * TTD007 Merge1
 * TTD008 Luces corregidas y Main menu añadido
+* TTD009 Hud y menu de pausa integrados
 
