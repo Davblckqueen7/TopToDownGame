@@ -11,6 +11,8 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Materials/Material.h"
 #include "Engine/World.h"
+#include "Runtime/Engine/Public/TimerManager.h"
+#include "Engine/Engine.h"
 
 ATopToDownGameCharacter::ATopToDownGameCharacter()
 {
@@ -58,6 +60,10 @@ ATopToDownGameCharacter::ATopToDownGameCharacter()
 
 	InitialLife = 100.f;
 	CurrentLife = InitialLife;
+	LimitSeconds = 30;
+	LimitMinutes = 10;
+	TimeIsVisible = true;
+
 }
 
 float ATopToDownGameCharacter::GetCurrentLife()
@@ -75,12 +81,54 @@ void ATopToDownGameCharacter::UpdateCurrentLife(float life)
 	CurrentLife += life;
 }
 
+int ATopToDownGameCharacter::GetLimitSeconds()
+{
+	return LimitSeconds;
+}
+
+int ATopToDownGameCharacter::GetLimitMinutes()
+{
+	return LimitMinutes;
+}
+
+bool ATopToDownGameCharacter::GetTimeIsVisible()
+{
+	return TimeIsVisible;
+}
+
+void ATopToDownGameCharacter::UpdateTime()
+{
+	if (LimitSeconds > 0) {
+		LimitSeconds -= 1;
+	}
+	else {
+		if (LimitMinutes > 0) {
+			LimitMinutes -= 1;
+			LimitSeconds = 59;
+		}
+		
+	}
+}
+
+
+void ATopToDownGameCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	GetWorld()->GetTimerManager().SetTimer(TimerSeg, this, &ATopToDownGameCharacter::UpdateTime, 1.0f, true);
+}
+
 void ATopToDownGameCharacter::Tick(float DeltaSeconds)
 {
+
+
     Super::Tick(DeltaSeconds);
 
 	UpdateCurrentLife(-DeltaSeconds * 0.01f*InitialLife);
 
+	//LimitSeconds -= DeltaSeconds;
+
+	
+	
 	if (CursorToWorld != nullptr)
 	{
 		if (UHeadMountedDisplayFunctionLibrary::IsHeadMountedDisplayEnabled())
