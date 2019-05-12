@@ -11,6 +11,10 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Materials/Material.h"
 #include "Engine/World.h"
+#include "Runtime/Engine/Public/TimerManager.h"
+#include "Engine/Engine.h"
+#include "MySaveGame.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 ATopToDownGameCharacter::ATopToDownGameCharacter()
 {
@@ -56,8 +60,12 @@ ATopToDownGameCharacter::ATopToDownGameCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
 
-	InitialLife = 100.f;
+	InitialLife = 1.0f;
 	CurrentLife = InitialLife;
+	LimitSeconds = 30;
+	LimitMinutes = 10;
+	TimeIsVisible = true;
+
 }
 
 float ATopToDownGameCharacter::GetCurrentLife()
@@ -70,18 +78,84 @@ float ATopToDownGameCharacter::GetInitialLife()
 	return InitialLife;
 }
 
+void ATopToDownGameCharacter::SaveGame()
+{
+	UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
+	SaveGameInstance->PlayerPosition = this->GetActorLocation();
+	SaveGameInstance->PlayerLife = this->GetCurrentLife();
+	UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("Slot1"), 0);
+
+}
+
+void ATopToDownGameCharacter::LoadGame()
+{
+	UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
+	SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("Slot1"),0));
+	this->SetActorLocation(SaveGameInstance->PlayerPosition);
+	this->SetLife(SaveGameInstance->PlayerLife);
+}
+
 void ATopToDownGameCharacter::UpdateCurrentLife(float life)
 {
 	CurrentLife += life;
 }
 
+void ATopToDownGameCharacter::RedLife()
+{
+	CurrentLife -= 0.25f;
+}
+
+void ATopToDownGameCharacter::SetLife(float life)
+{
+	CurrentLife = life;
+}
+
+int ATopToDownGameCharacter::GetLimitSeconds()
+{
+	return LimitSeconds;
+}
+
+int ATopToDownGameCharacter::GetLimitMinutes()
+{
+	return LimitMinutes;
+}
+
+bool ATopToDownGameCharacter::GetTimeIsVisible()
+{
+	return TimeIsVisible;
+}
+
+void ATopToDownGameCharacter::UpdateTime()
+{
+	if (LimitSeconds > 0) {
+		LimitSeconds -= 1;
+	}
+	else {
+		if (LimitMinutes > 0) {
+			LimitMinutes -= 1;
+			LimitSeconds = 59;
+		}
+		
+	}
+}
+
+
+void ATopToDownGameCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	GetWorld()->GetTimerManager().SetTimer(TimerSeg, this, &ATopToDownGameCharacter::UpdateTime, 1.0f, true);
+}
 
 void ATopToDownGameCharacter::Tick(float DeltaSeconds)
 {
+
+
     Super::Tick(DeltaSeconds);
 
-	UpdateCurrentLife(-DeltaSeconds * 0.01f*InitialLife);
+	//UpdateCurrentLife(-DeltaSeconds * 0.01f*InitialLife);
 
+	InputComponent->BindAction("ReduccionVida", IE_Pressed, this, &ATopToDownGameCharacter::RedLife);
+	
 	if (CursorToWorld != nullptr)
 	{
 		if (UHeadMountedDisplayFunctionLibrary::IsHeadMountedDisplayEnabled())

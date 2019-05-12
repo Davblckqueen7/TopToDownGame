@@ -2,6 +2,10 @@
 	"BuildId": "4541578",
 	"Modules": 
 	{
+<<<<<<< HEAD
 		"TopToDownGame": "UE4Editor-TopToDownGame-2147.dll"
+=======
+		"TopToDownGame": "UE4Editor-TopToDownGame-4016.dll"
+>>>>>>> origin/Andres
 	}
 }

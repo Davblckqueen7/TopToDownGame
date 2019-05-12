@@ -11,4 +11,5 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD007 Merge1
 * TTD008 Luces corregidas y Main menu añadido
 * TTD009 Hud y menu de pausa integrados
-
+* TTD010 Cuenta regresiva incluida
+* TTD011 Guardado y carga de posicion añadidos

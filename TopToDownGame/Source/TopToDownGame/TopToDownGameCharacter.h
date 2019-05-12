@@ -22,11 +22,46 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Life")
 		float GetInitialLife();
 
-	/**Actuliza el valor de vida del personaje*/
+	/**guardado*/
+	UFUNCTION(BlueprintCallable)
+		void SaveGame();
+
+	/**Cargar*/
+	UFUNCTION(BlueprintCallable)
+		void LoadGame();
+
+
+	/**Actuliza el valor de vida del coso*/
 	UFUNCTION(BlueprintCallable, Category = "Life")
 		void UpdateCurrentLife(float life);
 
+	/**Actuliza el valor de vida del coso*/
+	UFUNCTION(BlueprintCallable, Category = "Life")
+		void RedLife();
 
+	/**Setlife*/
+		UFUNCTION(BlueprintCallable, Category = "Life")
+		void SetLife(float life);
+
+	/**Funcion de acceso a LimitSeconds*/
+	UFUNCTION(BlueprintPure, Category = "Life")
+		int GetLimitSeconds();
+
+	/**Funcion de acceso a LimitMinutes*/
+	UFUNCTION(BlueprintPure, Category = "Life")
+		int GetLimitMinutes();
+
+	/**Funcion de acceso a TimeIsVisible*/
+	UFUNCTION(BlueprintPure, Category = "Life")
+		bool GetTimeIsVisible();
+
+
+	/**Actuliza el tiempo*/
+	UFUNCTION(BlueprintCallable, Category = "Life")
+		void UpdateTime();
+
+	UFUNCTION()
+		void BeginPlay();
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;
 
@@ -38,12 +73,28 @@ public:
 	FORCEINLINE class UDecalComponent* GetCursorToWorld() { return CursorToWorld; }
 
 private:
+
+	FTimerHandle TimerSeg;
+
 	/**Character current life*/
 	UPROPERTY(EditAnywhere, Category = "Life")
 	float CurrentLife;
 
 	UPROPERTY(EditAnywhere, Category = "Life")
 		float InitialLife;
+
+	/**Segundos de tiempo limite*/
+	UPROPERTY(EditAnywhere, Category = "Life")
+		int LimitSeconds;
+
+	/**Segundos de tiempo limite*/
+	UPROPERTY(EditAnywhere, Category = "Life")
+		int LimitMinutes;
+
+	/**True si el tiempo es visible en pantalla*/
+	UPROPERTY(EditAnywhere, Category = "Life")
+		bool TimeIsVisible;
+
 
 	/** Top down camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
