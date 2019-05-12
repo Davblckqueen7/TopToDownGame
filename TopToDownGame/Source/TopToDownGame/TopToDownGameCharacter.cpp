@@ -75,6 +75,7 @@ void ATopToDownGameCharacter::UpdateCurrentLife(float life)
 	CurrentLife += life;
 }
 
+
 void ATopToDownGameCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);

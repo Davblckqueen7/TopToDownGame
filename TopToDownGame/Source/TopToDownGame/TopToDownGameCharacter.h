@@ -25,6 +25,8 @@ public:
 	/**Actuliza el valor de vida del personaje*/
 	UFUNCTION(BlueprintCallable, Category = "Life")
 		void UpdateCurrentLife(float life);
+
+
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;
 
