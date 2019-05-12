@@ -22,9 +22,26 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Life")
 		float GetInitialLife();
 
+	/**guardado*/
+	UFUNCTION(BlueprintCallable)
+		void SaveGame();
+
+	/**Cargar*/
+	UFUNCTION(BlueprintCallable)
+		void LoadGame();
+
+
 	/**Actuliza el valor de vida del coso*/
 	UFUNCTION(BlueprintCallable, Category = "Life")
 		void UpdateCurrentLife(float life);
+
+	/**Actuliza el valor de vida del coso*/
+	UFUNCTION(BlueprintCallable, Category = "Life")
+		void RedLife();
+
+	/**Setlife*/
+		UFUNCTION(BlueprintCallable, Category = "Life")
+		void SetLife(float life);
 
 	/**Funcion de acceso a LimitSeconds*/
 	UFUNCTION(BlueprintPure, Category = "Life")
