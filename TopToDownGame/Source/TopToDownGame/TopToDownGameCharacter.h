@@ -51,10 +51,18 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Life")
 		int GetLimitMinutes();
 
+	UFUNCTION()
+		void SetMinutes(float Min);
+
+	UFUNCTION()
+		void SetSeconds(float Sec);
+
 	/**Funcion de acceso a TimeIsVisible*/
 	UFUNCTION(BlueprintPure, Category = "Life")
 		bool GetTimeIsVisible();
 
+	UFUNCTION(BlueprintPure, Category = "Life")
+		bool GetJumpIsPossible();
 
 	/**Actuliza el tiempo*/
 	UFUNCTION(BlueprintCallable, Category = "Life")
@@ -94,6 +102,9 @@ private:
 	/**True si el tiempo es visible en pantalla*/
 	UPROPERTY(EditAnywhere, Category = "Life")
 		bool TimeIsVisible;
+
+	UPROPERTY(EditAnywhere, Category = "Life")
+		bool JumpIsPossible;
 
 
 	/** Top down camera */

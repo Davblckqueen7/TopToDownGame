@@ -6,5 +6,7 @@ UMySaveGame::UMySaveGame()
 {
 	PlayerPosition = FVector(0.f, 0.f, 0.f);
 	PlayerLife = 0;
+	Minutes = 0;
+	Seconds = 0;
 
 }

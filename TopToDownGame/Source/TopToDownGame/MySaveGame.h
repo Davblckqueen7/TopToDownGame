@@ -19,6 +19,11 @@ public:
 
 	UPROPERTY()
 		FVector PlayerPosition;
+	UPROPERTY()
 	float PlayerLife; 
+	UPROPERTY()
+		int Minutes;
+	UPROPERTY()
+		int Seconds;
 	
 };

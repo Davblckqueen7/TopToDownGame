@@ -62,10 +62,10 @@ ATopToDownGameCharacter::ATopToDownGameCharacter()
 
 	InitialLife = 1.0f;
 	CurrentLife = InitialLife;
-	LimitSeconds = 30;
-	LimitMinutes = 10;
+	LimitSeconds = 0;
+	LimitMinutes = 1;
 	TimeIsVisible = true;
-
+	JumpIsPossible = true;
 }
 
 float ATopToDownGameCharacter::GetCurrentLife()
@@ -83,6 +83,8 @@ void ATopToDownGameCharacter::SaveGame()
 	UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
 	SaveGameInstance->PlayerPosition = this->GetActorLocation();
 	SaveGameInstance->PlayerLife = this->GetCurrentLife();
+	SaveGameInstance->Minutes = this->GetLimitMinutes();
+	SaveGameInstance->Seconds = this->GetLimitSeconds();
 	UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("Slot1"), 0);
 
 }
@@ -93,6 +95,8 @@ void ATopToDownGameCharacter::LoadGame()
 	SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("Slot1"),0));
 	this->SetActorLocation(SaveGameInstance->PlayerPosition);
 	this->SetLife(SaveGameInstance->PlayerLife);
+	this->SetMinutes(SaveGameInstance->Minutes);
+	this->SetSeconds(SaveGameInstance->Seconds);
 }
 
 void ATopToDownGameCharacter::UpdateCurrentLife(float life)
@@ -120,9 +124,24 @@ int ATopToDownGameCharacter::GetLimitMinutes()
 	return LimitMinutes;
 }
 
+void ATopToDownGameCharacter::SetMinutes(float Min)
+{
+	LimitMinutes = Min;
+}
+
+void ATopToDownGameCharacter::SetSeconds(float Sec)
+{
+	LimitSeconds = Sec;
+}
+
 bool ATopToDownGameCharacter::GetTimeIsVisible()
 {
 	return TimeIsVisible;
+}
+
+bool ATopToDownGameCharacter::GetJumpIsPossible()
+{
+	return JumpIsPossible;
 }
 
 void ATopToDownGameCharacter::UpdateTime()
