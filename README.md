@@ -15,4 +15,5 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD011 Guardado y carga de posicion añadidos
 * TTD012 Navegación del bote añadida
 * TTD013 Nuevo sistema de camaras implementado
-* TTD0014 Fog of War añadido
+* TTD014 Fog of War añadido
+* TTD015 Cambio de GameMOde implementado por nivel y teletransportcaiónes entre zonas
