@@ -39,6 +39,7 @@ void ATopToDownGamePlayerController::SetupInputComponent()
 	InputComponent->BindAction("ResetVR", IE_Pressed, this, &ATopToDownGamePlayerController::OnResetVR);
 }
 
+
 void ATopToDownGamePlayerController::OnResetVR()
 {
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
