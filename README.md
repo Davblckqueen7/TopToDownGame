@@ -13,3 +13,5 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD009 Hud y menu de pausa integrados
 * TTD010 Cuenta regresiva incluida
 * TTD011 Guardado y carga de posicion añadidos
+* TTD012 Navegación del bote añadida
+* TTD013 Nuevo sistema de camaras implementado

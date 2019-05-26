@@ -10,5 +10,6 @@ public class TopToDownGame : ModuleRules
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "NavigationSystem", "AIModule","UMG" });
         PrivateDependencyModuleNames.AddRange(new string[] { "Slate","SlateCore" });
+        PrivateDependencyModuleNames.AddRange(new string[] { "RHI", "RenderCore" });
     }
 }
