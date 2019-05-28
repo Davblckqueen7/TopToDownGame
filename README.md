@@ -18,3 +18,4 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD014 Fog of War añadido
 * TTD015 Cambio de GameMOde implementado por nivel y teletransportcaiónes entre zonas
 * TTD016 Sectores mapas implementados
+* TTD017 Diseño de menu inplementados
