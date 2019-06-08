@@ -27,13 +27,6 @@ ATopToDownGameNPC::ATopToDownGameNPC()
 	GetCharacterMovement()->bConstrainToPlane = true;
 	GetCharacterMovement()->bSnapToPlaneAtStart = true;
 
-	// Configure pawnsensor
-	PawnSensor = CreateDefaultSubobject<UPawnSensingComponent>( TEXT("Pawn Sensor"));
-	PawnSensor->OnSeePawn.AddDynamic(this, &ATopToDownGameNPC::OnPawnSeen);
-	PawnSensor->SensingInterval = .25f; // 4 times per second
-	PawnSensor->bOnlySensePlayers = false;
-	PawnSensor->SetPeripheralVisionAngle(45.f);
-
 	// Activate ticking in order to update the cursor every frame.
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
@@ -42,13 +35,4 @@ ATopToDownGameNPC::ATopToDownGameNPC()
 void ATopToDownGameNPC::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-}
-
-void ATopToDownGameNPC::OnPawnSeen(APawn * SeenPawn)
-{
-	if (SeenPawn == nullptr)
-	{
-		return;
-	}
-	DrawDebugSphere(GetWorld(), SeenPawn->GetActorLocation(), 32.0f, 12, FColor::Yellow, false, 10.0f);	
 }

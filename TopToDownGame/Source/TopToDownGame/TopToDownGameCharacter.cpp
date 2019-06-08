@@ -68,12 +68,12 @@ ATopToDownGameCharacter::ATopToDownGameCharacter()
 	JumpIsPossible = true;
 }
 
-float ATopToDownGameCharacter::GetCurrentLife()
+int ATopToDownGameCharacter::GetCurrentLife()
 {
 	return CurrentLife;
 }
 
-float ATopToDownGameCharacter::GetInitialLife()
+int ATopToDownGameCharacter::GetInitialLife()
 {
 	return InitialLife;
 }
@@ -109,7 +109,7 @@ void ATopToDownGameCharacter::RedLife()
 	CurrentLife -= 0.25f;
 }
 
-void ATopToDownGameCharacter::SetLife(float life)
+void ATopToDownGameCharacter::SetLife(int life)
 {
 	CurrentLife = life;
 }

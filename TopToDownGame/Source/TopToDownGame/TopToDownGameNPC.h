@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "Perception/PawnSensingComponent.h"
 #include "TopToDownGameNPC.generated.h"
 
 
@@ -22,11 +21,4 @@ public:
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;
 
-
-protected:
-	UPROPERTY(VisibleAnywhere, Category = Components)
-	UPawnSensingComponent* PawnSensor;
-
-	UFUNCTION()
-	void OnPawnSeen(APawn* SeenPawn);
 };

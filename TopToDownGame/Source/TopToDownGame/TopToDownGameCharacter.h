@@ -16,11 +16,11 @@ public:
 
 	/**Funcion de acceso a CurrentLife*/
 	UFUNCTION(BlueprintPure, Category = "Life")
-		float GetCurrentLife();
+		int GetCurrentLife();
 
 	/**Funcion de acceso a InitialLife*/
 	UFUNCTION(BlueprintPure, Category = "Life")
-		float GetInitialLife();
+		int GetInitialLife();
 
 	/**guardado*/
 	UFUNCTION(BlueprintCallable)
@@ -41,7 +41,7 @@ public:
 
 	/**Setlife*/
 		UFUNCTION(BlueprintCallable, Category = "Life")
-		void SetLife(float life);
+		void SetLife(int life);
 
 	/**Funcion de acceso a LimitSeconds*/
 	UFUNCTION(BlueprintPure, Category = "Life")
@@ -86,10 +86,10 @@ private:
 
 	/**Character current life*/
 	UPROPERTY(EditAnywhere, Category = "Life")
-	float CurrentLife;
+	int CurrentLife;
 
 	UPROPERTY(EditAnywhere, Category = "Life")
-		float InitialLife;
+		int InitialLife;
 
 	/**Segundos de tiempo limite*/
 	UPROPERTY(EditAnywhere, Category = "Life")
