@@ -19,3 +19,4 @@ Proyecto de Aplicaciones 3D UMNG.
 * TTD015 Cambio de GameMOde implementado por nivel y teletransportcaiónes entre zonas
 * TTD016 Sectores mapas implementados
 * TTD017 Diseño de menu inplementados
+* TTD018 Cinematica inicial agregada
