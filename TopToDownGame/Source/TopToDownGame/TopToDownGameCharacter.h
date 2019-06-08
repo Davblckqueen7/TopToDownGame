@@ -51,10 +51,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Life")
 		int GetLimitMinutes();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Life")
 		void SetMinutes(float Min);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Life")
 		void SetSeconds(float Sec);
 
 	/**Funcion de acceso a TimeIsVisible*/

@@ -83,17 +83,6 @@ public:
 	/** Returns CursorToWorld subobject **/
 	FORCEINLINE class UDecalComponent* GetCursorToWorld() { return CursorToWorld; }
 
-private:
-
-	FTimerHandle TimerSeg;
-
-	/**Character current life*/
-	UPROPERTY(EditAnywhere, Category = "Life")
-		float CurrentLife;
-
-	UPROPERTY(EditAnywhere, Category = "Life")
-		float InitialLife;
-
 	/**Segundos de tiempo limite*/
 	UPROPERTY(EditAnywhere, Category = "Life")
 		int LimitSeconds;
@@ -105,6 +94,19 @@ private:
 	/**True si el tiempo es visible en pantalla*/
 	UPROPERTY(EditAnywhere, Category = "Life")
 		bool TimeIsVisible;
+
+private:
+
+	FTimerHandle TimerSeg;
+
+	/**Character current life*/
+	UPROPERTY(EditAnywhere, Category = "Life")
+		float CurrentLife;
+
+	UPROPERTY(EditAnywhere, Category = "Life")
+		float InitialLife;
+
+	
 
 	UPROPERTY(EditAnywhere, Category = "Life")
 		bool JumpIsPossible;
